@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block jumbotron %} 
+<div class="jumbotron"> 
+	  <div class="container"> 
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="row">
+      	<div class="col-sm-12 col-md-6">
+	        <h1>Ecommerce</h1>
+	        <p>This is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+	        <p>To see the difference between static and fixed top navbars, just scroll.</p>
+	        <p>
+	          <a class="btn btn-lg btn-primary" href="" role="button">Join Us &raquo;</a>
+	        </p>
+        </div>
+        <div class="col-sm-12 col-md-6" >
+        		<iframe width="560" height="315" src="https://www.youtube.com/embed/_PwhiWxHK8o?list=PLnvKubj2-I2LhIibS8TOGC42xsD3-liux" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+  	 </div>
+</div>
+{% endblock %} 
+
+{% block content %} 
+<div class="row">
+	<div class="col-md-6">
+		<form method='POST' action=''> {% csrf_token %}
+			{{form | crispy}}
+
+			<input type='submit' class="btn  btn-primary" value='Sign Up' />
+
+		</form>
+	</div>
+</div>
+{% endblock %} 
