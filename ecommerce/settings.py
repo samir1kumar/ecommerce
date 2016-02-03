@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_HOST ='your_host'  
+EMAIL_HOST_USER = 'your@email.com'
+EMAIL_HOST_PASSWORD = 'your_password'
+EMAIL_PORT = 465     #check your server config
+EMAIL_USE_SSL = True  #check your server config
 # Application definition
 
 INSTALLED_APPS = (
@@ -35,8 +39,15 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party apps
+    'registration',
+    'crispy_forms',
+
+    #my apps
+    'newsletter',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +66,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,3 +111,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "served_static_root", "static_root")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "project_static", "static_folder"),
+    # '/var/www/static/',
+)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "served_static_root", "media_root")
+
+
+#Crispy Form Settings
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+#Django Registration rdux settings
+ACCOUNT_ACTIVATION_DAYS = 7 
+REGISTRATION_AUTO_LOGIN = True 
+LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
